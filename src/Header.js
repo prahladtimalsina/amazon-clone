@@ -30,7 +30,7 @@ if(user){
       <div className="header_Nav">
         <Link to="/login" className="header_link">
           <div className="header_Option">
-  <span className="header_optionLineOne">Hello {user?.email}</span>
+  <span className="header_optionLineOne">Hello {!user ? 'Guest' :user.email}</span>
             <span className="header_optionLineTwo">{user ? 'Sign Out':'Sign In'}</span>
           </div>
         </Link>

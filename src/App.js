@@ -1,4 +1,4 @@
-import React, { useEffect,unsubscribe } from "react";
+import React, { useEffect, unsubscribe } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Header";
@@ -7,6 +7,7 @@ import Checkout from "./Checkout";
 import Login from "./Login";
 import { useStateValue } from "./StateProvider"; //data layer
 import { auth } from "./firebase";
+import Payment from "./Payment";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -37,19 +38,21 @@ function App() {
       unsubscribe();
     };
   }, []);
-  console.log("User is >>>>",user);
+  console.log("User is >>>>", user);
   return (
     <Router>
       <div className="app">
         <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/checkout">
             <Header />
             <Checkout />
-            {/* <h1>Checkout</h1> */}
           </Route>
-          <Route path="/login">
-            {/* <h1>Login Page</h1> */}
-            <Login />
+          <Route path="/payment">
+            <Header />
+            <Payment />
           </Route>
           <Route path="/">
             <Header />
